@@ -1,0 +1,25 @@
+{
+  "name": "therealweekendprojectthree",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start":"node server/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/calebmiskowiec94/theRealweekendprojectthree.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/calebmiskowiec94/theRealweekendprojectthree/issues"
+  },
+  "homepage": "https://github.com/calebmiskowiec94/theRealweekendprojectthree#readme",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.4",
+    "pg": "^7.1.2"
+  }
+}
