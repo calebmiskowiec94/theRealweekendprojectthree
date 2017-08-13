@@ -12,7 +12,7 @@ router.post('/', function(req, res){
 			res.sendStatus(500);
 		} else {
 			// when connecting to database worked!
-			client.query('INSERT INTO messages (name, message) VALUES ($1, $2);', [req.body.name, req.body.message], function(errorMakingQuery, result) {
+			client.query('INSERT INTO toDo (task,comp,del) VALUES ($1, $2);', [req.body.name, req.body.message], function(errorMakingQuery, result) {
 				done();
 				if(errorMakingQuery) {
 					console.log('Error making database query', errorMakingQuery);
@@ -93,7 +93,7 @@ router.get('/', function(req, res) {
 			res.sendStatus(500);
 		} else {
 			// when connecting to database worked!
-			client.query('SELECT * FROM messages;', function(errorMakingQuery, result) {
+			client.query('SELECT * FROM toDo;', function(errorMakingQuery, result) {
 				done();
 				if(errorMakingQuery) {
 					console.log('Error making database query', errorMakingQuery);
