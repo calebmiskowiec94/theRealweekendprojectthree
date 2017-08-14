@@ -6,6 +6,7 @@ $(document).ready(function () {
         var taskInput = $('#taskInput').val();
         var inputObject = {
             task: taskInput
+
         };//end of input object
         $.ajax({
             method: 'POST',
@@ -17,7 +18,11 @@ $(document).ready(function () {
             }//end of ajax object
         });//endof ajax
 
+
+
     });//end of clickadd button
+
+
 
 
     $('#messageContainer').on('click', '.completeButton', function () {
@@ -25,47 +30,52 @@ $(document).ready(function () {
 
         //changeMessageColor();
         var messageId = $(this).parent().data().id; // a number 
-        //var newMessage = $(this).siblings('input').val(); // a string
+        var newMessage = $(this).siblings('input').val(); // a string
+        var colorChanger = function changeMessageColor() {
+            $('body').on('click', '.completeButton', function () {
+                $(this).css("color", "green");
+            })
+        }
         console.log('message id is', messageId);
         //console.log('message text is', newMessage);
-        //var messageUpdate = {
-        //message: newMessage
-        //};
-        changeMessageColor();
+        var messageUpdate = {
+            message: newMessage,
+            Id: messageId,
+            colorchangerer: colorChanger
+        };
+        //changeMessageColor();
         $.ajax({
             method: 'PUT',
             url: '/toDo/' + messageId, // will end up as something like /message/3  +messageId to get the number when it works
             success: function (response) {
+                messageId;
+                newMessage;
+                colorChanger;
                 getMessages();
-                changeMessageColor();
+                //changeMessageColor();
             }
         })
     });//end of complete click
-
     //delete ajax
-$('#messageContainer').on('click', '.deleteButton', function () {
+    $('#messageContainer').on('click', '.deleteButton', function () {
         console.log('deleted clickity');
 
         //changeMessageColor();
         var messageId = $(this).data().id; // a number 
-      
+
         $.ajax({
             method: 'DELETE',
             url: '/toDo/' + messageId, // will end up as something like /message/3  +messageId to get the number when it works
             success: function (response) {
                 getMessages();
-               
+
             }
         })
     });//end of complete click
 
     //end of delete ajax
 
-
-
-
 });//end of doc.ready
-
 
 function getMessages() {
     $.ajax({
@@ -77,11 +87,6 @@ function getMessages() {
         }
     })
 };
-
-
-
-
-
 
 function drawMessage(toDoArray) {
     $('#messageContainer').empty(); // clears all messages currently on DOM
@@ -104,9 +109,9 @@ function drawMessage(toDoArray) {
 
 
 //function for changing color
-function changeMessageColor() {
-    $('body').on('click', '.completeButton', function () {
-        $(this).css("color", "green");
-    })
-}
+//
+   // $('body').on('click', '.completeButton', function () {
+     //   $(this).css("color", "green");
+    //})
+//}
 
