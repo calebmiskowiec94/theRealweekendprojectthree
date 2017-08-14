@@ -27,7 +27,7 @@ router.post('/', function(req, res){
 
 // /message/7 gets CHOMPED and becomes /7
 // now we set id equal to 7 with :id
-router.put('/1', function(req, res){ //:id
+router.put('/:id', function(req, res){ //:id
 	var messageId = req.params.id; // messageId is 7
 	console.log('message put was hit!');
 	// Add an INSERT query
@@ -39,7 +39,7 @@ router.put('/1', function(req, res){ //:id
 		} else {
 			// when connecting to database worked!
 			// query like this: UPDATE messages SET message='Have a really terrific day!' WHERE id=1;
-			client.query('UPDATE messages SET message=$1 WHERE id=$2;', 
+			client.query('UPDATE toDo SET message=$1 WHERE id=$2;', 
 							[req.body.message, messageId], 
 							function(errorMakingQuery, result) {
 				done();
@@ -68,7 +68,7 @@ router.delete('/:id', function(req, res){
 		} else {
 			// when connecting to database worked!
 			// query like this: UPDATE messages SET message='Have a really terrific day!' WHERE id=1;
-			client.query('DELETE FROM messages WHERE id=$1;', 
+			client.query('DELETE FROM toDo WHERE id=$1;', 
 							[messageId], 
 							function(errorMakingQuery, result) {
 				done();
