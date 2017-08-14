@@ -23,6 +23,14 @@ $.ajax({
 
 });//end of click button
 
+
+$('#messageContainer').on('click', '.completeButton', function(){
+        console.log('completedly clickity');
+});//end of complete click
+
+
+
+
 });//end of doc.ready
 
 
