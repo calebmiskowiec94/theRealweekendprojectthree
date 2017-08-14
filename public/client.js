@@ -26,6 +26,24 @@ $.ajax({
 
 $('#messageContainer').on('click', '.completeButton', function(){
         console.log('completedly clickity');
+
+        //changeMessageColor();
+var messageId = $(this).data().id; // a number 
+        //var newMessage = $(this).siblings('input').val(); // a string
+        //console.log('message id is', messageId);
+        //console.log('message text is', newMessage);
+        //var messageUpdate = {
+            //message: newMessage
+        //};
+        changeMessageColor();
+        $.ajax({
+            method: 'PUT',
+            url: '/toDo/' + messageId, // will end up as something like /message/3  +messageId to get the number when it works
+            success: function(response) {
+                getMessages();
+                changeMessageColor();
+            }
+        })
 });//end of complete click
 
 
@@ -68,4 +86,12 @@ function drawMessage(toDoArray) {
         $('#messageContainer').prepend($messageDiv); // adds the entire new div to the DOM
     }
 }//end of drawmessage
+
+
+//function for changing color
+function changeMessageColor(){
+    $('body').on('click','.completeButton',function(){
+        $(this).css("color","green");
+    })
+}
 

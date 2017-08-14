@@ -27,7 +27,7 @@ router.post('/', function(req, res){
 
 // /message/7 gets CHOMPED and becomes /7
 // now we set id equal to 7 with :id
-router.put('/:id', function(req, res){
+router.put('/1', function(req, res){ //:id
 	var messageId = req.params.id; // messageId is 7
 	console.log('message put was hit!');
 	// Add an INSERT query
