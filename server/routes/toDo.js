@@ -12,7 +12,7 @@ router.post('/', function(req, res){
 			res.sendStatus(500);
 		} else {
 			// when connecting to database worked!
-			client.query('INSERT INTO toDo (task,comp,del) VALUES ($1, $2);', [req.body.name, req.body.message], function(errorMakingQuery, result) {
+			client.query('INSERT INTO toDo (task,comp,del) VALUES ($1, $2, $3);', [req.body.task, req.body.comp,req.body.del], function(errorMakingQuery, result) {
 				done();
 				if(errorMakingQuery) {
 					console.log('Error making database query', errorMakingQuery);

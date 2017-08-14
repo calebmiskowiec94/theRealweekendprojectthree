@@ -2,7 +2,7 @@ $(document).ready(function(){
 console.log('jquery');
 getMessages();
 $('#addTaskButton').on('click',function(){
-console.log('botton clicked')
+console.log('botton clicked');
 var taskInput = $('#taskInput').val();
 var inputObject = {
     task: taskInput
@@ -15,15 +15,15 @@ $.ajax({
                 console.log(response);
                 getMessages();
     }//end of ajax object
-})//endof ajax
+});//endof ajax
 
 
 
 
 
-})//end of click button
+});//end of click button
 
-})//end of doc.ready
+});//end of doc.ready
 
 
 function getMessages() {
@@ -35,7 +35,7 @@ function getMessages() {
             drawMessage(response);
         }
     })
-}
+};
 
 
 
